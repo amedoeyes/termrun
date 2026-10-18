@@ -99,29 +99,29 @@ impl Spec {
 #[derive(Debug, Parser)]
 #[command(version)]
 struct Cli {
-    #[arg(long = "terminal", value_parser = NonEmptyStringValueParser::new())]
+    #[arg(long = "terminal", help = "Terminal command", value_parser = NonEmptyStringValueParser::new())]
     terminal_command: Option<String>,
 
-    #[arg(long, value_parser = NonEmptyStringValueParser::new())]
+    #[arg(long, help = "Terminal exec subcommand", value_parser = NonEmptyStringValueParser::new())]
     subcommand: Option<String>,
 
-    #[arg(long, value_parser = NonEmptyStringValueParser::new())]
+    #[arg(long, help = "Terminal exec option", value_parser = NonEmptyStringValueParser::new())]
     exec_option: Option<String>,
 
-    #[arg(long, value_parser = NonEmptyStringValueParser::new())]
+    #[arg(long, help = "Terminal wait option", value_parser = NonEmptyStringValueParser::new())]
     wait_option: Option<String>,
 
-    #[arg(long, value_parser = NonEmptyStringValueParser::new())]
+    #[arg(long, help = "Terminal class option", value_parser = NonEmptyStringValueParser::new())]
     class_option: Option<String>,
 
-    #[arg(long, value_parser = NonEmptyStringValueParser::new())]
+    #[arg(long, help = "Terminal class", value_parser = NonEmptyStringValueParser::new())]
     class: Option<String>,
 
     #[cfg(target_os = "linux")]
-    #[arg(short, long)]
+    #[arg(short, long, help = "Redirect stdio to parent shell")]
     redirect: bool,
 
-    #[arg(required = true, trailing_var_arg = true)]
+    #[arg(required = true, trailing_var_arg = true, help = "Command to run")]
     command: Vec<String>,
 }
 
