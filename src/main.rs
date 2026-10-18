@@ -103,7 +103,7 @@ struct Cli {
     terminal_command: Option<String>,
 
     #[arg(long, help = "Terminal exec subcommand", value_parser = NonEmptyStringValueParser::new())]
-    subcommand: Option<String>,
+    exec_subcommand: Option<String>,
 
     #[arg(long, help = "Terminal exec option", value_parser = NonEmptyStringValueParser::new())]
     exec_option: Option<String>,
@@ -166,7 +166,7 @@ fn run() -> Result<u8, Error> {
 
     let spec = Spec::for_terminal(term_name);
 
-    let subcommand = cli.subcommand.as_deref().or(spec.subcommand);
+    let subcommand = cli.exec_subcommand.as_deref().or(spec.subcommand);
     let exec_option = cli.exec_option.as_deref().or(spec.exec);
     let wait_option = cli.wait_option.as_deref().or(spec.wait);
     let class_option = cli.class_option.as_deref().or(spec.class);
