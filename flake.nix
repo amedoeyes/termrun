@@ -17,7 +17,7 @@
         in
         {
           default = pkgs.rustPlatform.buildRustPackage rec {
-            pname = "fz";
+            pname = "termrun";
             version = "0.1.0";
 
             src = ./.;
@@ -26,15 +26,10 @@
               lockFile = "${src}/Cargo.lock";
             };
 
-            nativeBuildInputs = with pkgs; [
-              nasm
-              mold
-            ];
-
             meta = {
-              mainProgram = "fz";
-              description = "Fuzzy finder";
-              homepage = "https://git.eyoun.net/ahmed/fz";
+              mainProgram = "termrun";
+              description = "Command-line tool to run command-line tools on an external terminal emulator.";
+              homepage = "https://git.eyoun.net/ahmed/termrun";
               license = pkgs.lib.licenses.agpl3Only;
             };
           };
