@@ -200,7 +200,7 @@ fn run() -> Result<u8, Error> {
     if cli.redirect {
         let pid = std::process::id();
         cmd.arg("sh").arg("-c").arg(format!(
-            "exec \"$0\" \"$@\" 9</dev/tty </proc/{pid}/fd/0 >/proc/{pid}/fd/1 2>/proc/{pid}/fd/2"
+            "exec \"$0\" \"$@\" 9<>/dev/tty </proc/{pid}/fd/0 >/proc/{pid}/fd/1 2>/proc/{pid}/fd/2"
         ));
     }
 
